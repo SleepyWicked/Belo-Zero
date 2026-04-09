@@ -1,0 +1,1978 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Belo Zero — Do or Die | Chicago, IL</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Barlow+Condensed:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+
+/* ── RESET & BASE ── */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; font-size: 16px; }
+
+:root {
+  --black:  #1a0a06;
+  --dark:   #230e08;
+  --panel:  #2e1209;
+  --smoke:  #3a170c;
+  --line:   rgba(255,255,255,0.08);
+  --red:    #7a1208;
+  --red2:   #c91313;
+  --gold:   #c8920a;
+  --gold2:  #e0aa18;
+  --white:  #f5ede8;
+  --cream:  #e0cfc4;
+  --muted:  #9a8070;
+  --faded:  #6a4e42;
+}
+
+body {
+  background: var(--black);
+  color: var(--white);
+  font-family: 'Barlow', sans-serif;
+  font-weight: 300;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+a { text-decoration: none; color: inherit; }
+img { display: block; max-width: 100%; }
+
+/* ── SCROLLBAR ── */
+::-webkit-scrollbar { width: 3px; }
+::-webkit-scrollbar-track { background: var(--black); }
+::-webkit-scrollbar-thumb { background: var(--red2); }
+
+/* ══════════════════════════════════════
+   HEADER / NAV
+══════════════════════════════════════ */
+#header {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 300;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 40px;
+  height: 60px;
+  background: rgba(10,10,10,0.96);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--line);
+}
+
+.hdr-logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+}
+
+.hdr-logo-img {
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+  border-radius: 4px;
+  flex-shrink: 0;
+}
+
+.hdr-logo-mark {
+  width: 36px; height: 36px;
+  border: 2px solid var(--gold2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.hdr-logo-mark span {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 14px;
+  letter-spacing: 0.06em;
+  color: var(--gold2);
+  line-height: 1;
+}
+
+.hdr-logo-text {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 20px;
+  letter-spacing: 0.1em;
+  color: var(--white);
+}
+
+.hdr-nav {
+  display: flex;
+  list-style: none;
+  gap: 0;
+}
+
+.hdr-nav a {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);
+  padding: 8px 16px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  border-bottom: 2px solid transparent;
+  transition: color 0.2s, border-color 0.2s;
+}
+.hdr-nav a:hover, .hdr-nav a.active {
+  color: var(--gold2);
+  border-bottom-color: var(--gold2);
+}
+
+.hdr-wicked {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.hdr-wicked-label {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--faded);
+}
+.hdr-wicked-name {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* ══════════════════════════════════════
+   HERO
+══════════════════════════════════════ */
+#hero {
+  min-height: 100vh;
+  background: var(--black);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 60px 40px 80px;
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+}
+
+/* background number */
+.hero-bg-yr {
+  position: absolute;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 42vw;
+  color: rgba(255,255,255,0.018);
+  line-height: 1;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  user-select: none;
+  letter-spacing: -0.04em;
+}
+
+/* radial glow */
+.hero-glow {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 60% 55% at 50% 40%, rgba(158,26,10,0.16) 0%, transparent 65%),
+    radial-gradient(ellipse 40% 35% at 50% 90%, rgba(200,146,10,0.07) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 900px;
+  width: 100%;
+}
+
+/* year badge */
+.hero-year-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--gold2);
+  margin-bottom: 24px;
+  animation: fadeUp 0.6s ease 0.1s both;
+}
+.hero-year-badge::before,
+.hero-year-badge::after {
+  content: '';
+  display: block;
+  width: 28px; height: 1px;
+  background: var(--gold2);
+}
+
+/* patch / logo placeholder */
+.hero-patch {
+  width: 120px; height: 120px;
+  border: 3px solid var(--gold2);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 32px;
+  position: relative;
+  animation: fadeUp 0.6s ease 0.2s both;
+}
+.hero-patch::before {
+  content: '';
+  position: absolute;
+  inset: 6px;
+  border-radius: 50%;
+  border: 1px solid rgba(200,146,10,0.3);
+}
+.hero-patch-text {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 28px;
+  letter-spacing: 0.06em;
+  color: var(--gold2);
+  text-shadow: 0 0 20px rgba(200,146,10,0.4);
+  line-height: 1;
+}
+
+.hero-name {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(72px, 14vw, 160px);
+  line-height: 0.88;
+  letter-spacing: 0.04em;
+  color: var(--white);
+  text-shadow:
+    3px 3px 0 var(--red),
+    6px 6px 0 rgba(80,0,0,0.4);
+  margin-bottom: 16px;
+  animation: fadeUp 0.7s ease 0.3s both;
+}
+
+.hero-sub {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: clamp(14px, 2.5vw, 20px);
+  font-weight: 400;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 8px;
+  animation: fadeUp 0.6s ease 0.45s both;
+}
+
+.hero-genre {
+  font-family: 'Barlow', sans-serif;
+  font-size: 14px;
+  font-weight: 300;
+  color: var(--faded);
+  letter-spacing: 0.1em;
+  margin-bottom: 40px;
+  animation: fadeUp 0.6s ease 0.5s both;
+}
+
+.hero-btns {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 48px;
+  animation: fadeUp 0.6s ease 0.6s both;
+}
+
+.btn {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  padding: 12px 28px;
+  display: inline-block;
+  transition: all 0.2s;
+  border: 1px solid transparent;
+}
+.btn-primary { background: var(--red2); color: var(--white); border-color: var(--red2); }
+.btn-primary:hover { background: transparent; color: var(--red2); }
+.btn-outline { background: transparent; color: var(--cream); border-color: rgba(240,236,228,0.25); }
+.btn-outline:hover { border-color: var(--gold2); color: var(--gold2); }
+.btn-gold { background: var(--gold2); color: var(--black); border-color: var(--gold2); }
+.btn-gold:hover { background: #f0c020; border-color: #f0c020; }
+
+.hero-socials {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  animation: fadeUp 0.6s ease 0.7s both;
+}
+
+.hero-soc {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  padding: 7px 16px;
+  border: 1px solid var(--line);
+  color: var(--muted);
+  transition: all 0.2s;
+}
+.hero-soc:hover { border-color: var(--gold2); color: var(--gold2); }
+
+.hero-scroll {
+  position: absolute;
+  bottom: 28px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 9px;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--faded);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  animation: fadeUp 1s ease 1s both;
+}
+.hero-scroll-line {
+  width: 1px;
+  height: 36px;
+  background: linear-gradient(to bottom, var(--faded), transparent);
+  animation: scrollPulse 2s ease infinite;
+}
+@keyframes scrollPulse {
+  0%, 100% { opacity: 0.3; transform: scaleY(1); }
+  50% { opacity: 1; transform: scaleY(0.7); }
+}
+
+/* ══════════════════════════════════════
+   SECTION BASE
+══════════════════════════════════════ */
+.section {
+  padding: 96px 40px;
+  border-bottom: 1px solid var(--line);
+}
+
+.section-inner { max-width: 1080px; margin: 0 auto; }
+
+.section-kicker {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: var(--gold2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 12px;
+  text-align: center;
+}
+.section-kicker::before,
+.section-kicker::after {
+  content: '';
+  display: block;
+  width: 24px; height: 1px;
+  background: var(--gold2);
+}
+
+.section-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(40px, 6vw, 68px);
+  letter-spacing: 0.04em;
+  color: var(--white);
+  line-height: 0.95;
+  margin-bottom: 48px;
+  text-shadow: 2px 2px 0 var(--red), 3px 3px 0 rgba(80,0,0,0.3);
+  text-align: center;
+}
+
+/* ══════════════════════════════════════
+   ABOUT
+══════════════════════════════════════ */
+#about { background: var(--dark); }
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: 64px;
+  align-items: start;
+}
+
+.about-body {
+  font-size: 17px;
+  line-height: 1.9;
+  color: var(--cream);
+  margin-bottom: 22px;
+  font-weight: 300;
+}
+.about-body strong { color: var(--white); font-weight: 500; }
+
+.about-pull {
+  font-family: 'Barlow', sans-serif;
+  font-style: italic;
+  font-size: 20px;
+  line-height: 1.55;
+  color: var(--gold2);
+  border-left: 3px solid var(--red2);
+  padding-left: 20px;
+  margin: 32px 0;
+}
+
+.about-right { }
+
+/* year patch */
+.about-patch {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  padding: 32px;
+  text-align: center;
+  margin-bottom: 3px;
+}
+
+.ap-year {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 80px;
+  letter-spacing: 0.04em;
+  color: var(--gold2);
+  line-height: 1;
+  text-shadow: 2px 2px 0 var(--red), 4px 4px 0 rgba(80,0,0,0.3);
+}
+
+.ap-label {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--faded);
+  margin-top: 4px;
+}
+
+.about-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3px;
+}
+
+.astat {
+  background: var(--panel);
+  padding: 20px 16px;
+  border-bottom: 2px solid transparent;
+  transition: border-color 0.2s;
+}
+.astat:hover { border-bottom-color: var(--gold2); }
+.astat-val {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 26px;
+  letter-spacing: 0.05em;
+  color: var(--gold2);
+  line-height: 1;
+  margin-bottom: 4px;
+}
+.astat-key {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--faded);
+}
+
+/* ══════════════════════════════════════
+   ALBUM / LISTEN
+══════════════════════════════════════ */
+#album { background: var(--black); }
+
+.album-feature {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: 48px;
+  align-items: center;
+  margin-bottom: 56px;
+  padding-bottom: 56px;
+  border-bottom: 1px solid var(--line);
+}
+
+.album-art {
+  width: 300px; height: 300px;
+  background: var(--panel);
+  position: relative;
+  overflow: hidden;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.album-art::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(158,26,10,0.25) 0%, transparent 60%);
+}
+.album-art-text {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 36px;
+  letter-spacing: 0.06em;
+  color: rgba(255,255,255,0.08);
+  text-align: center;
+  line-height: 1.2;
+  position: relative;
+  z-index: 1;
+  padding: 20px;
+}
+.album-art-badge {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  background: var(--red2);
+  padding: 8px;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--white);
+  text-align: center;
+  z-index: 2;
+}
+
+.album-info { }
+.album-label {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--gold2);
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.album-label::before {
+  content: '';
+  display: block;
+  width: 20px; height: 1px;
+  background: var(--gold2);
+}
+.album-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 52px;
+  letter-spacing: 0.04em;
+  color: var(--white);
+  line-height: 0.95;
+  margin-bottom: 8px;
+  text-shadow: 2px 2px 0 var(--red);
+}
+.album-cat {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--faded);
+  margin-bottom: 24px;
+}
+.album-stream-label {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--faded);
+  margin-bottom: 12px;
+}
+.album-stream-links {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 24px;
+}
+.stream-pill {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  padding: 7px 16px;
+  border: 1px solid var(--line);
+  color: var(--muted);
+  transition: all 0.2s;
+}
+.stream-pill:hover { border-color: var(--gold2); color: var(--gold2); }
+
+/* full discography list */
+.disc-list { display: flex; flex-direction: column; gap: 2px; }
+
+.disc-row {
+  display: grid;
+  grid-template-columns: 28px 56px 1fr 80px auto;
+  align-items: center;
+  gap: 18px;
+  padding: 16px 20px;
+  background: var(--panel);
+  border-left: 2px solid transparent;
+  transition: background 0.15s, border-color 0.15s;
+}
+.disc-row:hover { background: var(--smoke); border-left-color: var(--gold2); }
+
+.dr-n { font-family: 'Barlow Condensed', sans-serif; font-size: 12px; color: var(--faded); text-align: right; }
+.dr-thumb {
+  width: 48px; height: 48px;
+  background: var(--smoke);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  color: var(--faded);
+}
+.dr-ti { font-family: 'Barlow Condensed', sans-serif; font-size: 18px; font-weight: 600; letter-spacing: 0.04em; color: var(--white); margin-bottom: 2px; }
+.dr-me { font-family: 'Barlow Condensed', sans-serif; font-size: 11px; letter-spacing: 0.08em; color: var(--faded); }
+.dr-yr { font-family: 'Barlow Condensed', sans-serif; font-size: 12px; color: var(--faded); text-align: center; }
+.dr-ce {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border: 1px solid var(--line);
+  color: var(--muted);
+  white-space: nowrap;
+}
+.dr-ce.gld { border-color: var(--gold2); color: var(--gold2); }
+.dr-ce.plt { border-color: var(--red2); color: var(--red2); }
+
+/* ══════════════════════════════════════
+   VIDEOS
+══════════════════════════════════════ */
+#videos { background: var(--dark); }
+
+.vid-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.vid-embed-card {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  overflow: hidden;
+  transition: border-color 0.2s;
+}
+.vid-embed-card:hover { border-color: rgba(200,146,10,0.3); }
+
+.vid-embed-wrap {
+  width: 100%;
+  aspect-ratio: 16/9;
+  position: relative;
+  background: var(--black);
+}
+.vid-embed-wrap iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.vid-embed-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.vep-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+.vep-label {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--faded);
+}
+
+.vid-embed-meta {
+  padding: 14px 16px 18px;
+}
+.vc-badge-inline {
+  display: inline-block;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  padding: 3px 9px;
+  background: var(--red2);
+  color: var(--white);
+  margin-bottom: 6px;
+}
+.vid-embed-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 20px;
+  letter-spacing: 0.05em;
+  color: var(--white);
+  margin-bottom: 3px;
+}
+.vid-embed-sub {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--faded);
+}
+
+/* ══════════════════════════════════════
+   SHOP
+══════════════════════════════════════ */
+#shop { background: var(--black); }
+
+.shop-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 3px;
+  margin-bottom: 32px;
+}
+
+.shop-card {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  overflow: hidden;
+  transition: border-color 0.2s, transform 0.2s;
+}
+.shop-card:hover { border-color: rgba(200,146,10,0.35); transform: translateY(-3px); }
+
+.sc-img {
+  width: 100%;
+  aspect-ratio: 1;
+  background: var(--smoke);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 48px;
+  color: rgba(255,255,255,0.04);
+  letter-spacing: 0.04em;
+  border-bottom: 1px solid var(--line);
+  overflow: hidden;
+}
+
+.sc-badge {
+  position: absolute;
+  top: 10px; right: 10px;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  padding: 4px 9px;
+  background: var(--red2);
+  color: var(--white);
+}
+
+.sc-body { padding: 18px 18px 22px; }
+.sc-tag {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold2);
+  margin-bottom: 6px;
+}
+.sc-name {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 17px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--white);
+  margin-bottom: 3px;
+}
+.sc-sub {
+  font-family: 'Barlow', sans-serif;
+  font-size: 12px;
+  color: var(--faded);
+  margin-bottom: 12px;
+}
+.sc-price-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.sc-price {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 22px;
+  letter-spacing: 0.04em;
+  color: var(--gold2);
+}
+.sc-buy {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  padding: 7px 14px;
+  background: var(--red2);
+  color: var(--white);
+  transition: background 0.2s;
+}
+.sc-buy:hover { background: #d42816; }
+
+.shop-note {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 12px;
+  letter-spacing: 0.15em;
+  color: var(--faded);
+  text-align: center;
+  margin-top: 16px;
+}
+.shop-note a { color: var(--gold2); text-decoration: underline; text-underline-offset: 3px; }
+
+/* ══════════════════════════════════════
+   EVENTS / SHOWS
+══════════════════════════════════════ */
+#events { background: var(--dark); }
+
+.events-announce {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 13px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 32px;
+  line-height: 1.8;
+}
+
+.events-socials {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 48px;
+}
+.ev-soc {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  padding: 7px 16px;
+  border: 1px solid var(--line);
+  color: var(--muted);
+  transition: all 0.2s;
+}
+.ev-soc:hover { border-color: var(--gold2); color: var(--gold2); }
+
+.event-list { display: flex; flex-direction: column; gap: 2px; }
+
+.event-row {
+  display: grid;
+  grid-template-columns: 80px 1fr auto auto;
+  align-items: center;
+  gap: 24px;
+  padding: 20px 24px;
+  background: var(--panel);
+  border-left: 2px solid transparent;
+  transition: background 0.15s, border-color 0.15s;
+}
+.event-row:hover { background: var(--smoke); border-left-color: var(--gold2); }
+
+.ev-date { }
+.ev-mo {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--gold2);
+}
+.ev-day {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 36px;
+  letter-spacing: 0.04em;
+  color: var(--white);
+  line-height: 1;
+}
+
+.ev-info { }
+.ev-name {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  color: var(--white);
+  margin-bottom: 3px;
+}
+.ev-venue {
+  font-family: 'Barlow', sans-serif;
+  font-size: 13px;
+  color: var(--faded);
+}
+
+.ev-type {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border: 1px solid var(--line);
+  color: var(--muted);
+  white-space: nowrap;
+}
+.ev-type.upcoming { border-color: var(--gold2); color: var(--gold2); }
+
+.ev-link {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  padding: 8px 18px;
+  background: var(--red2);
+  color: var(--white);
+  transition: background 0.2s;
+  white-space: nowrap;
+}
+.ev-link:hover { background: #d42816; }
+
+/* ══════════════════════════════════════
+   THE FOUNDATION (stats section)
+══════════════════════════════════════ */
+#foundation { background: var(--black); }
+
+.foundation-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 3px;
+}
+
+.found-cell {
+  background: var(--panel);
+  padding: 32px 24px;
+  border-bottom: 2px solid transparent;
+  transition: border-color 0.2s, background 0.2s;
+}
+.found-cell:hover { background: var(--smoke); border-bottom-color: var(--gold2); }
+
+.fc-mark {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 48px;
+  letter-spacing: 0.04em;
+  color: var(--gold2);
+  line-height: 1;
+  margin-bottom: 12px;
+  text-shadow: 1px 1px 0 var(--red);
+}
+.fc-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--white);
+  margin-bottom: 8px;
+}
+.fc-desc {
+  font-size: 13px;
+  font-weight: 300;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+/* ══════════════════════════════════════
+   CONTACT
+══════════════════════════════════════ */
+#contact { background: var(--dark); }
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: start;
+}
+
+.contact-desc {
+  font-size: 17px;
+  line-height: 1.9;
+  color: var(--cream);
+  margin-bottom: 28px;
+  font-weight: 300;
+}
+.contact-desc strong { color: var(--white); font-weight: 500; }
+
+.contact-email {
+  display: inline-block;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  color: var(--gold2);
+  border-bottom: 1px solid rgba(200,146,10,0.3);
+  padding-bottom: 2px;
+  margin-bottom: 32px;
+  transition: border-color 0.2s;
+}
+.contact-email:hover { border-bottom-color: var(--gold2); }
+
+.contact-socials {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.csoc {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 18px;
+  background: var(--panel);
+  border-left: 2px solid transparent;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);
+  transition: all 0.15s;
+}
+.csoc:hover { background: var(--smoke); border-left-color: var(--gold2); color: var(--gold2); }
+.csoc-arrow { color: var(--faded); }
+
+/* form */
+.f-label {
+  display: block;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--faded);
+  margin-bottom: 8px;
+  margin-top: 20px;
+}
+input[type=text], input[type=email], select, textarea {
+  width: 100%;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-bottom: 1px solid rgba(255,255,255,0.15);
+  padding: 12px 14px;
+  font-family: 'Barlow', sans-serif;
+  font-size: 14px;
+  font-weight: 300;
+  color: var(--white);
+  outline: none;
+  -webkit-appearance: none;
+  border-radius: 0;
+  transition: border-color 0.2s, background 0.2s;
+}
+input:focus, select:focus, textarea:focus {
+  border-color: rgba(200,146,10,0.45);
+  background: var(--smoke);
+}
+input::placeholder, textarea::placeholder { color: var(--faded); }
+textarea { resize: none; height: 92px; }
+select option { background: var(--panel); }
+
+/* ══════════════════════════════════════
+   FOOTER
+══════════════════════════════════════ */
+footer {
+  background: var(--black);
+  border-top: 1px solid rgba(200,146,10,0.15);
+}
+
+.footer-main {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 48px 40px 32px;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 32px;
+}
+
+.footer-logo-block {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.footer-name {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 28px;
+  letter-spacing: 0.08em;
+  color: var(--white);
+  text-shadow: 1px 1px 0 var(--red);
+}
+.footer-sub {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--cream);
+}
+
+.footer-divider {
+  width: 1px; height: 48px;
+  background: rgba(255,255,255,0.15);
+}
+
+.footer-wicked {
+  text-align: right;
+}
+.fw-label {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 9px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--cream);
+  margin-bottom: 4px;
+}
+.fw-name {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--white);
+}
+
+.footer-bottom {
+  border-top: 1px solid rgba(255,255,255,0.12);
+  padding: 16px 40px;
+  max-width: 1080px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.footer-copy {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--cream);
+}
+.footer-nav {
+  display: flex;
+  gap: 2px;
+}
+.footer-nav a {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--cream);
+  padding: 4px 10px;
+  transition: color 0.2s;
+}
+.footer-nav a:hover { color: var(--gold2); }
+
+/* ══════════════════════════════════════
+   ANIMATIONS
+══════════════════════════════════════ */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(22px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── YOUTUBE FACADE ── */
+.yt-facade { cursor: pointer; }
+.yt-play-btn {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 64px; height: 64px;
+  background: rgba(0,0,0,0.75);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  transition: background 0.2s, transform 0.2s;
+}
+.yt-facade:hover .yt-play-btn {
+  background: #ff0000;
+  transform: translate(-50%, -50%) scale(1.1);
+}
+.yt-play-tri {
+  width: 0; height: 0;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  border-left: 18px solid white;
+  margin-left: 4px;
+}
+
+/* ── WICKED ENTERTAINMENT — always red ── */
+.hdr-wicked-name, .fw-name { color: var(--red2) !important; }
+a.hdr-wicked-name, a.fw-name { text-decoration: none; }
+a.hdr-wicked-name:hover, a.fw-name:hover { color: #ff3333 !important; }
+
+/* ── MUSIC PLAYER ── */
+#music-player {
+  position: fixed;
+  bottom: 0; left: 0; right: 0;
+  z-index: 999;
+  height: 72px;
+  background: var(--black);
+  border-top: 2px solid var(--red2);
+  display: flex;
+  align-items: center;
+  padding: 0 24px;
+  gap: 0;
+}
+.mp-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 240px;
+  flex-shrink: 0;
+}
+.mp-art {
+  width: 48px; height: 48px;
+  object-fit: cover;
+  flex-shrink: 0;
+  border: 1px solid rgba(255,255,255,0.1);
+}
+.mp-info { overflow: hidden; }
+.mp-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: var(--white);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.mp-artist {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--red2);
+  margin-top: 2px;
+}
+.mp-center {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 0 24px;
+}
+.mp-controls {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.mp-btn {
+  background: none;
+  border: none;
+  color: var(--muted);
+  font-size: 14px;
+  cursor: pointer;
+  padding: 4px 8px;
+  transition: color 0.2s;
+  line-height: 1;
+}
+.mp-btn:hover { color: var(--white); }
+.mp-play {
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  border: 1.5px solid var(--gold2);
+  color: var(--gold2);
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+.mp-play:hover { background: rgba(224,170,24,0.15); }
+.mp-progress-wrap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  max-width: 500px;
+}
+.mp-time {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+  min-width: 28px;
+}
+.mp-bar {
+  flex: 1;
+  height: 3px;
+  background: rgba(255,255,255,0.1);
+  border-radius: 2px;
+  cursor: pointer;
+  position: relative;
+}
+.mp-fill {
+  height: 100%;
+  background: var(--red2);
+  border-radius: 2px;
+  width: 0%;
+  transition: width 0.1s linear;
+}
+.mp-right {
+  width: 200px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+.mp-tracklist { display: flex; gap: 4px; }
+.mp-track {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  padding: 6px 12px;
+  border: 1px solid var(--line);
+  color: var(--muted);
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.mp-track:hover, .mp-track.active { border-color: var(--red2); color: var(--red2); }
+body { padding-bottom: 72px; }
+@media (max-width: 680px) {
+  #music-player { padding: 0 12px; }
+  .mp-left { width: 160px; }
+  .mp-right { display: none; }
+}
+
+/* ══════════════════════════════════════
+   MOBILE
+══════════════════════════════════════ */
+@media (max-width: 860px) {
+  #header { padding: 0 20px; }
+  .hdr-nav { display: none; }
+  .hdr-wicked { display: none; }
+  .section, #hero, footer { padding-left: 20px; padding-right: 20px; }
+  #hero { padding-bottom: 60px; }
+  .about-grid { grid-template-columns: 1fr; gap: 40px; }
+  .album-feature { grid-template-columns: 1fr; }
+  .album-art { width: 100%; height: auto; aspect-ratio: 1; }
+  .contact-grid { grid-template-columns: 1fr; gap: 48px; }
+  .shop-grid { grid-template-columns: repeat(2, 1fr); }
+  .vid-grid { grid-template-columns: 1fr; }
+  .foundation-grid { grid-template-columns: repeat(2, 1fr); }
+  .footer-main { grid-template-columns: 1fr; text-align: center; }
+  .footer-divider { display: none; }
+  .footer-wicked { text-align: center; }
+  .footer-bottom { flex-direction: column; text-align: center; padding: 16px 20px; }
+  .disc-row { grid-template-columns: 20px 48px 1fr auto; }
+  .dr-yr { display: none; }
+  .event-row { grid-template-columns: 64px 1fr auto; gap: 12px; }
+  .ev-type { display: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header id="header">
+  <a href="#hero" class="hdr-logo">
+    <img src="/mnt/user-data/uploads/do_or_die_logo.jpg" alt="Do or Die" class="hdr-logo-img">
+    <span class="hdr-logo-text">BELO ZERO</span>
+  </a>
+  <ul class="hdr-nav">
+    <li><a href="#about">About</a></li>
+    <li><a href="#album">Album</a></li>
+    <li><a href="#videos">Videos</a></li>
+    <li><a href="#shop">Shop</a></li>
+    <li><a href="#events">Shows</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <div class="hdr-wicked">
+    <span class="hdr-wicked-label">Powered by</span>
+    <a href="https://wickedentertainment.net" target="_blank" class="hdr-wicked-name">Wicked Entertainment</a>
+  </div>
+</header>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg-yr">96</div>
+  <div class="hero-glow"></div>
+
+  <div class="hero-content">
+    <div class="hero-year-badge">Do or Die · Chicago, IL</div>
+
+    <div class="hero-patch" style="border:none;background:transparent;padding:0;">
+      <img src="/mnt/user-data/uploads/do_or_die_logo.jpg" alt="Do or Die" style="width:120px;height:120px;object-fit:cover;border-radius:50%;border:3px solid var(--gold2);">
+    </div>
+
+    <h1 class="hero-name">BELO ZERO</h1>
+    <p class="hero-sub">West Side's Own · Chicago, IL</p>
+    <p class="hero-genre">Chicago Legends</p>
+
+    <div class="hero-btns">
+      <a href="#album" class="btn btn-primary">New Music</a>
+      <a href="#shop" class="btn btn-outline">Shop Now</a>
+      <a href="#about" class="btn btn-outline">The Story</a>
+    </div>
+
+    <div class="hero-socials">
+      <a href="#" class="hero-soc">Instagram</a>
+      <a href="#" class="hero-soc">TikTok</a>
+      <a href="#" class="hero-soc">YouTube</a>
+      <a href="#" class="hero-soc">Spotify</a>
+      <a href="#" class="hero-soc">Apple Music</a>
+    </div>
+  </div>
+
+  <div class="hero-scroll">
+    Scroll
+    <div class="hero-scroll-line"></div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="section">
+  <div class="section-inner">
+    <div class="section-kicker">The Artist</div>
+    <h2 class="section-title">Born &amp; Built<br>on the West Side</h2>
+    <div class="about-grid">
+      <div>
+        <p class="about-body">Belo Zero is a Chicago rapper and one-third of the legendary Midwest hip-hop trio <strong>Do or Die</strong> — alongside N.A.R.D. and AK-47. Rooted in Chicago's West Side, his music is the sound of that block: raw, vivid, real, and built to last.</p>
+        <div class="about-pull">"Po Pimp put Chicago on the national map before anyone else did."</div>
+        <p class="about-body">Their 1996 platinum single <strong>"Po Pimp"</strong> ft. Twista hit #22 on the Billboard Hot 100. Signed to <strong>Rap-A-Lot Records</strong>, Do or Die released <em>Picture This</em> (Gold) and <em>Headz or Tailz</em> (Platinum, #13 Billboard 200), sparking <strong>Chicago's first national hip-hop wave</strong> alongside Crucial Conflict. Every bar is a postcard from the West Side.</p>
+        <p class="about-body">Beyond the mic, Belo founded <strong>Po' House Records</strong>, launched the <strong>Trap Line</strong> clothing brand, and continues with a partnership with <strong>Wicked Entertainment</strong> — a true independent who built their own lane.</p>
+      </div>
+      <div>
+        <div class="about-patch">
+          <div class="ap-year">1996</div>
+          <div class="ap-label">Do or Die — Est. Chicago</div>
+        </div>
+        <div class="about-stats">
+          <div class="astat"><div class="astat-val">CHI</div><div class="astat-key">West Side, IL</div></div>
+          <div class="astat"><div class="astat-val">W.E.</div><div class="astat-key">Wicked Entertainment</div></div>
+          <div class="astat"><div class="astat-val">3M+</div><div class="astat-key">Albums Sold</div></div>
+          <div class="astat"><div class="astat-val">#22</div><div class="astat-key">Billboard Hot 100</div></div>
+          <div class="astat"><div class="astat-val">#13</div><div class="astat-key">Billboard 200</div></div>
+          <div class="astat"><div class="astat-val">7</div><div class="astat-key">Projects</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ALBUM / LISTEN -->
+<section id="album" class="section">
+  <div class="section-inner">
+
+    <!-- THE TRUTH — Debut Solo -->
+    <div class="section-kicker">Debut Solo Album</div>
+    <h2 class="section-title">The Truth</h2>
+
+    <div class="album-feature" style="margin-bottom:64px;padding-bottom:64px;border-bottom:1px solid var(--line);">
+      <div class="album-art" style="position:relative;">
+        <img src="https://shop.wickedentertainment.net/cdn/shop/files/R-2460549-1665670363-4369.jpg?v=1691383530&width=493" alt="Belo Zero The Truth" style="width:100%;height:100%;object-fit:cover;display:block;">
+        <div class="album-art-badge">Po' House Records · WKD</div>
+      </div>
+      <div class="album-info">
+        <div class="album-label">Debut Solo Album — 2006</div>
+        <div class="album-title">The<br>Truth</div>
+        <div class="album-cat">Belo Zero · Produced by The Legendary Traxster</div>
+        <div class="album-stream-label">Stream on</div>
+        <div class="album-stream-links">
+          <a href="#" class="stream-pill">Spotify</a>
+          <a href="#" class="stream-pill">Apple Music</a>
+          <a href="#" class="stream-pill">YouTube Music</a>
+          <a href="#" class="stream-pill">Tidal</a>
+          <a href="#" class="stream-pill">Amazon Music</a>
+        </div>
+        <a href="https://shop.wickedentertainment.net/products/belo-zero-do-or-die-the-truth-cd" target="_blank" class="btn btn-outline" style="font-size:11px;margin-top:8px;display:inline-block;">Buy CD →</a>
+      </div>
+    </div>
+
+    <!-- I PLEAD THE 5TH — Second Solo -->
+    <div class="section-kicker">Second Solo Album</div>
+    <h2 class="section-title">I Plead<br>the 5th</h2>
+
+    <div class="album-feature">
+      <div class="album-art" style="position:relative;">
+        <img src="https://shop.wickedentertainment.net/cdn/shop/files/belozero.jpg?v=1687905814&width=493" alt="Belo Zero I Plead the 5th" style="width:100%;height:100%;object-fit:cover;display:block;">
+        <div class="album-art-badge">Po' House Records · WKD</div>
+      </div>
+      <div class="album-info">
+        <div class="album-label">Second Solo Project</div>
+        <div class="album-title">I Plead<br>the 5th</div>
+        <div class="album-cat">Belo Zero · Po' House Records · ft. Twista, KD, Cold Hard</div>
+        <div class="album-stream-label">Stream on</div>
+        <div class="album-stream-links">
+          <a href="#" class="stream-pill">Spotify</a>
+          <a href="#" class="stream-pill">Apple Music</a>
+          <a href="#" class="stream-pill">YouTube Music</a>
+          <a href="#" class="stream-pill">Tidal</a>
+          <a href="#" class="stream-pill">Amazon Music</a>
+        </div>
+        <a href="#contact" class="btn btn-outline" style="font-size:11px;">Press &amp; Media Inquiries</a>
+      </div>
+    </div>
+
+    <!-- full discography -->
+    <div class="section-kicker" style="margin-bottom:20px;">Full Discography</div>
+    <div class="disc-list">
+      <div class="disc-row">
+        <div class="dr-n">1</div>
+        <div class="dr-thumb">PT</div>
+        <div><div class="dr-ti">Picture This</div><div class="dr-me">Do or Die · Rap-A-Lot Records</div></div>
+        <div class="dr-yr">1996</div>
+        <div class="dr-ce gld">Gold</div>
+      </div>
+      <div class="disc-row">
+        <div class="dr-n">2</div>
+        <div class="dr-thumb">H/T</div>
+        <div><div class="dr-ti">Headz or Tailz</div><div class="dr-me">Do or Die · #13 Billboard 200</div></div>
+        <div class="dr-yr">1998</div>
+        <div class="dr-ce plt">Platinum</div>
+      </div>
+      <div class="disc-row">
+        <div class="dr-n">3</div>
+        <div class="dr-thumb" style="padding:0;overflow:hidden;">
+          <img src="https://shop.wickedentertainment.net/cdn/shop/files/R-2460549-1665670363-4369.jpg?v=1691383530&width=100" alt="The Truth" style="width:100%;height:100%;object-fit:cover;display:block;">
+        </div>
+        <div><div class="dr-ti">The Truth</div><div class="dr-me">Solo Debut · Prod. The Legendary Traxster</div></div>
+        <div class="dr-yr">2006</div>
+        <div class="dr-ce">Solo Debut</div>
+      </div>
+      <div class="disc-row">
+        <div class="dr-n">4</div>
+        <div class="dr-thumb" style="padding:0;overflow:hidden;">
+          <img src="https://shop.wickedentertainment.net/cdn/shop/files/belozero.jpg?v=1687905814&width=100" alt="I Plead the 5th" style="width:100%;height:100%;object-fit:cover;display:block;">
+        </div>
+        <div><div class="dr-ti">I Plead the 5th</div><div class="dr-me">Solo · Po' House Records · ft. Twista, KD, Cold Hard</div></div>
+        <div class="dr-yr">—</div>
+        <div class="dr-ce">Solo</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VIDEOS -->
+<section id="videos" class="section">
+  <div class="section-inner">
+    <div class="section-kicker">Watch</div>
+    <h2 class="section-title">Music Videos</h2>
+    <div class="vid-grid">
+
+      <div class="vid-embed-card">
+        <div class="vid-embed-wrap yt-facade" data-vid="BvNdX9-siaw">
+          <img src="https://img.youtube.com/vi/BvNdX9-siaw/hqdefault.jpg" alt="Do U ft. Twista" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;">
+          <div class="yt-play-btn"><div class="yt-play-tri"></div></div>
+        </div>
+        <div class="vid-embed-meta">
+          <div class="vc-badge-inline">🔥 Trending</div>
+          <div class="vid-embed-title">"Do U" ft. Twista &amp; Johnny P</div>
+          <div class="vid-embed-sub">Do or Die · Official Video 2025</div>
+        </div>
+      </div>
+
+      <div class="vid-embed-card">
+        <div class="vid-embed-wrap yt-facade" data-vid="oElwW--cz2s">
+          <img src="https://img.youtube.com/vi/oElwW--cz2s/hqdefault.jpg" alt="Po Pimp ft. Twista" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;">
+          <div class="yt-play-btn"><div class="yt-play-tri"></div></div>
+        </div>
+        <div class="vid-embed-meta">
+          <div class="vid-embed-title">"Po Pimp" ft. Twista</div>
+          <div class="vid-embed-sub">Do or Die · Official Video · 1996</div>
+        </div>
+      </div>
+
+      <div class="vid-embed-card">
+        <div class="vid-embed-wrap yt-facade" data-vid="-rbTqkDWJVw">
+          <img src="https://img.youtube.com/vi/-rbTqkDWJVw/hqdefault.jpg" alt="Rollin ft. KD" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;">
+          <div class="yt-play-btn"><div class="yt-play-tri"></div></div>
+        </div>
+        <div class="vid-embed-meta">
+          <div class="vid-embed-title">"Rollin'" ft. KD</div>
+          <div class="vid-embed-sub">Belo Zero · Official Video</div>
+        </div>
+      </div>
+
+      <div class="vid-embed-card">
+        <div class="vid-embed-wrap yt-facade" data-vid="dPns-4WnuM4">
+          <img src="https://img.youtube.com/vi/dPns-4WnuM4/hqdefault.jpg" alt="Cum and Go ft. Twista & John Blu" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;">
+          <div class="yt-play-btn"><div class="yt-play-tri"></div></div>
+        </div>
+        <div class="vid-embed-meta">
+          <div class="vid-embed-title">"Cum and Go" ft. Twista &amp; John Blu</div>
+          <div class="vid-embed-sub">Belo Zero · Official Video</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- SHOP -->
+<section id="shop" class="section">
+  <div class="section-inner">
+    <div class="section-kicker">Merch</div>
+    <h2 class="section-title">Official Store</h2>
+    <div class="shop-grid">
+
+      <!-- Product 1: I Plead the 5th CD — image: belozero.jpg -->
+      <div class="shop-card">
+        <div class="sc-img" style="padding:0;background:var(--smoke);">
+          <img src="https://shop.wickedentertainment.net/cdn/shop/files/belozero.jpg?v=1687905814&width=493" alt="I Plead the 5th CD" style="width:100%;height:100%;object-fit:cover;display:block;">
+          <span class="sc-badge">New Drop</span>
+        </div>
+        <div class="sc-body">
+          <div class="sc-tag">New Drop</div>
+          <div class="sc-name">I Plead the 5th — CD</div>
+          <div class="sc-sub">Belo Zero · Po' House Records</div>
+          <div class="sc-price-row">
+            <span class="sc-price">$10</span>
+            <a href="https://shop.wickedentertainment.net/products/belo-zero-i-plead-the-5th-cd?_pos=2&_psq=belo&_ss=e&_v=1.0" target="_blank" class="sc-buy">Buy Now →</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product 2: The Truth CD — image: R-2460549-1665670363-4369.jpg -->
+      <div class="shop-card">
+        <div class="sc-img" style="padding:0;background:var(--smoke);">
+          <img src="https://shop.wickedentertainment.net/cdn/shop/files/R-2460549-1665670363-4369.jpg?v=1691383530&width=493" alt="The Truth CD" style="width:100%;height:100%;object-fit:cover;display:block;">
+        </div>
+        <div class="sc-body">
+          <div class="sc-tag">Debut Solo</div>
+          <div class="sc-name">The Truth — CD</div>
+          <div class="sc-sub">Belo Zero · Wicked Entertainment</div>
+          <div class="sc-price-row">
+            <span class="sc-price">$10</span>
+            <a href="https://shop.wickedentertainment.net/products/belo-zero-do-or-die-the-truth-cd" target="_blank" class="sc-buy">Buy Now →</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product 3: The Truth Chopped & Screwed — image: R-2460549-1665670363-4369.jpg -->
+      <div class="shop-card">
+        <div class="sc-img" style="padding:0;background:var(--smoke);">
+          <img src="https://shop.wickedentertainment.net/cdn/shop/files/R-2460549-1665670363-4369.jpg?v=1691383530&width=493" alt="The Truth Chopped & Screwed" style="width:100%;height:100%;object-fit:cover;display:block;">
+          <span class="sc-badge">C&amp;S</span>
+        </div>
+        <div class="sc-body">
+          <div class="sc-tag">Chopped &amp; Screwed</div>
+          <div class="sc-name">The Truth — C&amp;S CD</div>
+          <div class="sc-sub">Belo Zero · Limited Edition</div>
+          <div class="sc-price-row">
+            <span class="sc-price">$8.95</span>
+            <a href="https://shop.wickedentertainment.net/products/belo-zero-the-truth-chopped-screwed-cd" target="_blank" class="sc-buy">Buy Now →</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product 4: Poster — image: belo-poster-for-shop.jpg -->
+      <div class="shop-card">
+        <div class="sc-img" style="padding:0;background:var(--smoke);">
+          <img src="https://shop.wickedentertainment.net/cdn/shop/files/belo-poster-for-shop.jpg?v=1687486489&width=493" alt="I Plead the 5th Poster 18x24" style="width:100%;height:100%;object-fit:cover;display:block;">
+          <span class="sc-badge">Limited</span>
+        </div>
+        <div class="sc-body">
+          <div class="sc-tag">Collector's Item</div>
+          <div class="sc-name">I Plead the 5th — Poster 18x24</div>
+          <div class="sc-sub">Belo Zero · Limited Run</div>
+          <div class="sc-price-row">
+            <span class="sc-price">$10</span>
+            <a href="https://shop.wickedentertainment.net/products/belo-zero-i-plead-the-5th-poster-8x24" target="_blank" class="sc-buy">Buy Now →</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <p class="shop-note">Full store at <a href="https://shop.wickedentertainment.net/collections/belo-zero" target="_blank">shop.wickedentertainment.net</a></p>
+  </div>
+</section>
+
+<!-- EVENTS -->
+<section id="events" class="section">
+  <div class="section-inner">
+    <div class="section-kicker">Live</div>
+    <h2 class="section-title">Shows &amp; Events</h2>
+    <p class="events-announce">Follow for upcoming show announcements:</p>
+    <div class="events-socials">
+      <a href="#" class="ev-soc">Instagram</a>
+      <a href="#" class="ev-soc">Facebook</a>
+      <a href="#" class="ev-soc">TikTok</a>
+    </div>
+    <div class="event-list">
+      <div class="event-row">
+        <div class="ev-date"><div class="ev-mo">TBA</div><div class="ev-day">—</div></div>
+        <div class="ev-info"><div class="ev-name">Album Release Show</div><div class="ev-venue">Venue TBA · Chicago, IL</div></div>
+        <div class="ev-type upcoming">Upcoming</div>
+        <a href="#contact" class="ev-link">Get Info →</a>
+      </div>
+      <div class="event-row">
+        <div class="ev-date"><div class="ev-mo">TBA</div><div class="ev-day">—</div></div>
+        <div class="ev-info"><div class="ev-name">Chicago West Side Show</div><div class="ev-venue">Venue TBA · Chicago, IL</div></div>
+        <div class="ev-type upcoming">Upcoming</div>
+        <a href="#contact" class="ev-link">Get Info →</a>
+      </div>
+    </div>
+    <div style="margin-top:32px;">
+      <a href="#contact" class="btn btn-primary">Book Belo Zero for Your Event</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOUNDATION -->
+<section id="foundation" class="section">
+  <div class="section-inner">
+    <div class="section-kicker">The Foundation</div>
+    <h2 class="section-title">1996. Then &amp; Now.</h2>
+    <div class="foundation-grid">
+      <div class="found-cell">
+        <div class="fc-mark">1996</div>
+        <div class="fc-title">The Year Do or Die Started</div>
+        <div class="fc-desc">Do or Die dropped "Po Pimp" in 1996 — the same year Chicago's West Side officially put itself on the national hip-hop map.</div>
+      </div>
+      <div class="found-cell">
+        <div class="fc-mark">CHI</div>
+        <div class="fc-title">West Side, Always</div>
+        <div class="fc-desc">Do or Die put Chicago's West Side on the national map. Belo Zero carries that identity everywhere — it's in the name, the music, and every move he makes.</div>
+      </div>
+      <div class="found-cell">
+        <div class="fc-mark">DOD</div>
+        <div class="fc-title">Do or Die Roots</div>
+        <div class="fc-desc">Alongside N.A.R.D. and AK-47, Do or Die sparked Chicago's first national hip-hop movement — before Kanye, before Chance, before anyone.</div>
+      </div>
+      <div class="found-cell">
+        <div class="fc-mark">W.E.</div>
+        <div class="fc-title">Wicked Entertainment</div>
+        <div class="fc-desc">Powered by <a href="https://wickedentertainment.net" target="_blank" style="color:var(--gold2);text-decoration:none;">Wicked Entertainment</a> — Chicago's respected independent label and media firm, the same foundation behind Emerg, Trap Line, and more.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="section">
+  <div class="section-inner">
+    <div class="section-kicker">Get in Touch</div>
+    <h2 class="section-title">Press. Bookings.<br>Business.</h2>
+    <div class="contact-grid">
+      <div>
+        <p class="contact-desc">For media inquiries, booking requests, press features, and business partnerships, reach out to the Wicked Entertainment team directly.</p>
+        <a href="/cdn-cgi/l/email-protection#efad8a8380b58a9d80afb8868c848a8baa819b8a9d9b8e8681828a819bc1818a9b" class="contact-email"><span class="__cf_email__" data-cfemail="84c6e1e8ebdee1f6ebc4d3ede7efe1e0c1eaf0e1f6f0e5edeae9e1eaf0aaeae1f0">[email&#160;protected]</span></a>
+        <div class="contact-socials">
+          <a href="#" class="csoc">Instagram <span class="csoc-arrow">↗</span></a>
+          <a href="#" class="csoc">TikTok <span class="csoc-arrow">↗</span></a>
+          <a href="#" class="csoc">YouTube <span class="csoc-arrow">↗</span></a>
+          <a href="#" class="csoc">Spotify <span class="csoc-arrow">↗</span></a>
+          <a href="#" class="csoc">Apple Music <span class="csoc-arrow">↗</span></a>
+        </div>
+      </div>
+      <div>
+        <label class="f-label">Name</label>
+        <input type="text" placeholder="Your name">
+        <label class="f-label">Email</label>
+        <input type="email" placeholder="your@email.com">
+        <label class="f-label">Inquiry Type</label>
+        <select>
+          <option value="" disabled selected>Select type</option>
+          <option>Booking / Performance</option>
+          <option>Press / Media</option>
+          <option>Feature / Collaboration</option>
+          <option>Business / Brand</option>
+          <option>General</option>
+        </select>
+        <label class="f-label">Message</label>
+        <textarea placeholder="What's good..."></textarea>
+        <a href="#" class="btn btn-primary" style="display:block;text-align:center;margin-top:20px;">Send Message</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-main">
+    <div class="footer-logo-block">
+      <div class="footer-name">Belo Zero</div>
+      <div class="footer-sub">Do or Die · Chicago, IL · Est. 1996</div>
+    </div>
+    <div class="footer-divider"></div>
+    <div class="footer-wicked">
+      <div class="fw-label">Powered by</div>
+      <a href="https://wickedentertainment.net" target="_blank" class="fw-name" style="text-decoration:none;">Wicked Entertainment</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">© 2026 Po House Records / Wicked Entertainment Network Inc. · Chicago, IL · All Rights Reserved</span>
+    <nav class="footer-nav">
+      <a href="#about">About</a>
+      <a href="#album">Music</a>
+      <a href="#shop">Shop</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</footer>
+
+<!-- MUSIC PLAYER -->
+<div id="music-player">
+  <div class="mp-left">
+    <img id="mp-art" src="https://shop.wickedentertainment.net/cdn/shop/files/belozero.jpg?v=1687905814&width=100" alt="Album Art" class="mp-art">
+    <div class="mp-info">
+      <div id="mp-title" class="mp-title">Bloody Hands</div>
+      <div class="mp-artist">BELO ZERO — Do or Die</div>
+    </div>
+  </div>
+  <div class="mp-center">
+    <div class="mp-controls">
+      <button class="mp-btn" id="mp-prev" title="Previous">&#9664;&#9664;</button>
+      <button class="mp-btn mp-play" id="mp-play" title="Play/Pause">&#9654;</button>
+      <button class="mp-btn" id="mp-next" title="Next">&#9654;&#9654;</button>
+    </div>
+    <div class="mp-progress-wrap">
+      <span id="mp-cur" class="mp-time">0:00</span>
+      <div class="mp-bar" id="mp-bar">
+        <div class="mp-fill" id="mp-fill"></div>
+      </div>
+      <span id="mp-dur" class="mp-time">0:00</span>
+    </div>
+  </div>
+  <div class="mp-right">
+    <div class="mp-tracklist">
+      <div class="mp-track active" data-src="" data-title="Bloody Hands" data-art="https://shop.wickedentertainment.net/cdn/shop/files/belozero.jpg?v=1687905814&width=100">Track 1</div>
+      <div class="mp-track" data-src="" data-title="Go Slow" data-art="https://shop.wickedentertainment.net/cdn/shop/files/belozero.jpg?v=1687905814&width=100">Track 2</div>
+    </div>
+  </div>
+</div>
+
+<audio id="mp-audio"></audio>
+
+<script>
+// ── NAV ACTIVE ──
+const navLinks = document.querySelectorAll('.hdr-nav a');
+const obs = new IntersectionObserver(function(entries) {
+  entries.forEach(function(e) {
+    if (e.isIntersecting) {
+      navLinks.forEach(function(l) { l.classList.remove('active'); });
+      var a = document.querySelector('.hdr-nav a[href="#' + e.target.id + '"]');
+      if (a) a.classList.add('active');
+    }
+  });
+}, { threshold: 0.35 });
+document.querySelectorAll('section[id]').forEach(function(s) { obs.observe(s); });
+
+// ── YOUTUBE CLICK-TO-PLAY ──
+document.querySelectorAll('.yt-facade').forEach(function(el) {
+  el.addEventListener('click', function() {
+    var vid = this.dataset.vid;
+    var iframe = document.createElement('iframe');
+    iframe.src = 'https://www.youtube-nocookie.com/embed/' + vid + '?autoplay=1&rel=0';
+    iframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture');
+    iframe.setAttribute('allowfullscreen', '');
+    iframe.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;border:none;';
+    this.innerHTML = '';
+    this.appendChild(iframe);
+  });
+});
+
+// ── MUSIC PLAYER ──
+var audio = document.getElementById('mp-audio');
+var playBtn = document.getElementById('mp-play');
+var mpFill = document.getElementById('mp-fill');
+var mpCur = document.getElementById('mp-cur');
+var mpDur = document.getElementById('mp-dur');
+var mpBar = document.getElementById('mp-bar');
+var mpTitle = document.getElementById('mp-title');
+var mpArt = document.getElementById('mp-art');
+var tracks = document.querySelectorAll('.mp-track');
+var currentTrack = 0;
+var isPlaying = false;
+
+function fmt(s) {
+  var m = Math.floor(s / 60);
+  var sec = Math.floor(s % 60);
+  return m + ':' + (sec < 10 ? '0' : '') + sec;
+}
+
+function loadTrack(idx) {
+  tracks.forEach(function(t) { t.classList.remove('active'); });
+  tracks[idx].classList.add('active');
+  audio.src = tracks[idx].dataset.src;
+  mpTitle.textContent = tracks[idx].dataset.title;
+  mpArt.src = tracks[idx].dataset.art;
+  currentTrack = idx;
+}
+
+function togglePlay() {
+  if (isPlaying) {
+    audio.pause();
+    playBtn.innerHTML = '&#9654;';
+    isPlaying = false;
+  } else {
+    audio.play().catch(function() {});
+    playBtn.innerHTML = '&#9646;&#9646;';
+    isPlaying = true;
+  }
+}
+
+playBtn.addEventListener('click', togglePlay);
+
+document.getElementById('mp-prev').addEventListener('click', function() {
+  currentTrack = (currentTrack - 1 + tracks.length) % tracks.length;
+  loadTrack(currentTrack);
+  if (isPlaying) audio.play().catch(function() {});
+});
+
+document.getElementById('mp-next').addEventListener('click', function() {
+  currentTrack = (currentTrack + 1) % tracks.length;
+  loadTrack(currentTrack);
+  if (isPlaying) audio.play().catch(function() {});
+});
+
+audio.addEventListener('timeupdate', function() {
+  if (audio.duration) {
+    var pct = (audio.currentTime / audio.duration) * 100;
+    mpFill.style.width = pct + '%';
+    mpCur.textContent = fmt(audio.currentTime);
+  }
+});
+
+audio.addEventListener('loadedmetadata', function() {
+  mpDur.textContent = fmt(audio.duration);
+});
+
+audio.addEventListener('ended', function() {
+  currentTrack = (currentTrack + 1) % tracks.length;
+  loadTrack(currentTrack);
+  audio.play().catch(function() {});
+});
+
+mpBar.addEventListener('click', function(e) {
+  var rect = this.getBoundingClientRect();
+  var pct = (e.clientX - rect.left) / rect.width;
+  audio.currentTime = pct * audio.duration;
+});
+
+tracks.forEach(function(t, i) {
+  t.addEventListener('click', function() {
+    loadTrack(i);
+    audio.play().catch(function() {});
+    playBtn.innerHTML = '&#9646;&#9646;';
+    isPlaying = true;
+  });
+});
+</script>
